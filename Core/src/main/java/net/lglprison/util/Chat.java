@@ -7,11 +7,8 @@ import org.bukkit.entity.Player;
 import java.util.logging.Logger;
 
 public class Chat {
-
     static Logger log = Bukkit.getServer().getLogger();
-
     public static String prefix = "&f[&aCore&f] ";
-
     public static void send(Player p, String input) {
         p.sendMessage(Color(Chat.prefix + input));
     }
