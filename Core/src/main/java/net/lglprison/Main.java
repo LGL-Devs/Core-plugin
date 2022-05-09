@@ -23,14 +23,14 @@ public class Main extends JavaPlugin {
         saveDefaultConfig();
 
         try {
-            bot.enable();
+            Bot.enable();
         } catch (LoginException e) {
             throw new RuntimeException(e);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
 
-        Database.connect();
+        //Database.connect();
         //command.enable(this);
 
         Chat.console("&fStarting Core");
@@ -44,9 +44,11 @@ public class Main extends JavaPlugin {
     @Override
     public void onDisable() {
 
-        bot.disable();
+        Bot.disable();
         Database.disable();
 ;       Chat.console("&fCore Disabled");
 
     }
+
+    public static API api;
 }
