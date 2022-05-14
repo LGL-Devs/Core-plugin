@@ -16,7 +16,12 @@ public class readyEvent extends ListenerAdapter {
                     Commands.slash("strike", "Gives a User a Strike")
                             .addOption(OptionType.USER, "user", "Targeted user"),
                     Commands.slash("selector", "Posts the Roles Selector")
-                            .addOption(OptionType.CHANNEL, "channel", "Targeted channel"),
+                            .addOption(OptionType.CHANNEL, "channel", "Targeted channel")
+                            .addOptions(
+                                    new OptionData(OptionType.STRING, "type", "Tickets or Roles")
+                                            .addChoice("Tickets", "ticket")
+                                            .addChoice("Roles", "roles")
+                            ),
                     Commands.slash("status", "Status Command")
                             .addOptions(
                                     new OptionData(OptionType.STRING, "type", "Bot or Server")

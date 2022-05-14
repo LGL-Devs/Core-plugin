@@ -1,6 +1,7 @@
 package net.lglprison;
 
 import net.lglprison.discord.*;
+import net.lglprison.events.Event;
 import net.lglprison.mongo.Database;
 import net.lglprison.util.Chat;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -10,17 +11,15 @@ import javax.security.auth.login.LoginException;
 import java.io.File;
 
 public class Main extends JavaPlugin {
-    private static File data = new File("plugins/Core/config.yml");
-    public static YamlConfiguration config = YamlConfiguration.loadConfiguration(data);
-
-    public Main() {
-
-    }
+    private static final File configData = new File("plugins/Core/config.yml");
+    public static YamlConfiguration config = YamlConfiguration.loadConfiguration(configData);
+    public Main() {}
 
     @Override
     public void onEnable() {
 
         saveDefaultConfig();
+
 
         try {
             Bot.enable();
@@ -30,7 +29,8 @@ public class Main extends JavaPlugin {
             throw new RuntimeException(e);
         }
 
-        //Database.connect();
+        Database.connect();
+        Event.listeners(this);
         //command.enable(this);
 
         Chat.console("&fStarting Core");
@@ -46,7 +46,7 @@ public class Main extends JavaPlugin {
 
         Bot.disable();
         Database.disable();
-;       Chat.console("&fCore Disabled");
+        Chat.console("&fCore Disabled");
 
     }
 

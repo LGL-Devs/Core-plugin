@@ -4,33 +4,50 @@ import com.mongodb.BasicDBObject;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.model.UpdateOptions;
 import com.mongodb.client.model.Updates;
+import net.lglprison.util.Chat;
 import org.bson.Document;
 import org.bson.conversions.Bson;
 
 public class Player {
 
-    public static void findPlayer() {
+    public enum currency { silvers, doubloons, rubies, blocks }
 
-        FindIterable<Document> user = Database.collection.find(new Document("name", "SirBlob"));// give Document as the find() argument
+    public static boolean findPlayer(org.bukkit.entity.Player p) {
+
+        FindIterable<Document> user = Database.collection.find(new Document("UUID", p.getUniqueId()));
 
         if(user.first() == null) {
             System.out.println("User not in database");
-            return;
+            return false;
         }
 
         System.out.println(user.first());
-        return;
+        return true;
+
+    }
+
+    public static Document getPlayer(org.bukkit.entity.Player p) {
+
+        FindIterable<Document> user = Database.collection.find(new Document("UUID", p));
+
+        if(user.first() == null) {
+            Chat.console("User: " + p + " not in database");
+            return null;
+        }
+
+        return user.first();
 
     }
 
     public static void createPlayer(org.bukkit.entity.Player p) {
 
-        BasicDBObject query = new BasicDBObject("name", "MongoDB");
+        BasicDBObject query = new BasicDBObject("UUID", p);
 
         Bson updates = Updates.combine(
-                Updates.set("runtime", 99),
-                Updates.addToSet("genres", "Sports"),
-                Updates.currentTimestamp("lastUpdated")
+                Updates.set("rubies", 0),
+                Updates.set("doubloons", 0),
+                Updates.set("silvers", 0),
+                Updates.set("blocks", 0)
         );
 
         UpdateOptions options = new UpdateOptions().upsert(true);
@@ -38,15 +55,19 @@ public class Player {
         Database.collection.updateOne(query, updates, options);
     }
 
-    public static void updatePlayer(String type) {
+    public static void updatePlayer(org.bukkit.entity.Player p, currency c, int amount) {
 
-        BasicDBObject query = new BasicDBObject("$inc", "sorghum");
+        if(findPlayer(p)) {
+            BasicDBObject query = new BasicDBObject("UUID", p.getUniqueId());
 
-        BasicDBObject update = new BasicDBObject("$inc", new BasicDBObject("name", "d"));
+            BasicDBObject update = new BasicDBObject("$inc", new BasicDBObject(c.toString(), amount));
 
-        UpdateOptions options = new UpdateOptions().upsert(true);
+            UpdateOptions options = new UpdateOptions().upsert(true);
 
-        Database.collection.updateOne(query, update, options);
+            Database.collection.updateOne(query, update, options);
+        } else {
+            createPlayer(p);
+        }
     }
 
 }

@@ -16,6 +16,8 @@ public class selectMenu extends ListenerAdapter {
         Guild guild = interaction.getGuild();
         Member member = guild.getMemberById(interaction.getUser().getIdLong());
 
+
+
     }
 
 }

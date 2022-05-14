@@ -1,11 +1,11 @@
 
 # Bot CONFIGURATION
 
-bottoken: "ODI1NTYyMjA2Njc0MzU0MjAw.YF_uuA.dLc04_iPA4AjiDcCuOqgQcrj0Fo"
+bottoken: ""
 reportChannel: ""
 
 # Database CONFIGURATION
 
-DBuri: "46.4.55.26:27017"
-DBusername: "admin"
-DBpassword: "aP%4055word"
+DBuri: "cluster0.nulfd.mongodb.net"
+DBusername: "Admin"
+DBpassword: "lgldata7355608"

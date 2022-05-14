@@ -5,3 +5,4 @@ author: Sir_Blob_
 website: sirblob.bosstop.ml
 main: net.lglprison.Main
 description: LGL Prisons Core plugin
+load: STARTUP
