@@ -2,20 +2,20 @@ package net.lglprison.events;
 
 import net.lglprison.Main;
 import net.lglprison.mongo.Database;
+import net.lglprison.mongo.Storage;
+import net.lglprison.util.Chat;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerQuitEvent;
 
-import static net.lglprison.mongo.Player.*;
-
 public class playerLeave implements Listener {
 
-    private static Main plugin;
+    private Main plugin;
 
     public playerLeave(Main plugin) {
-        playerLeave.plugin = plugin;
+        this.plugin = plugin;
 
         Bukkit.getPluginManager().registerEvents(this, plugin);
     }
@@ -27,7 +27,7 @@ public class playerLeave implements Listener {
 
         int blocks = Database.blockbroken.get(p.getUniqueId());
 
-        updatePlayer(p, currency.blocks, blocks);
+        Storage.setPlayer(p.getUniqueId(), Storage.data.blocks, blocks);
     }
 
 }

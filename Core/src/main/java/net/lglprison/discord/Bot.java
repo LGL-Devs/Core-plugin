@@ -4,13 +4,12 @@ import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.entities.Activity;
 
+import net.dv8tion.jda.api.requests.GatewayIntent;
 import net.lglprison.util.Chat;
+
 import static net.lglprison.Main.config;
 
 import javax.security.auth.login.LoginException;
-
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class Bot {
     public static JDA jda;
@@ -19,13 +18,19 @@ public class Bot {
         //TextChannel textChannel = event.getGuild().getTextChannelsByName("CHANNEL_NAME",true).get(0);
         //textChannel.sendMessage("MESSAGE").queue();
 
-        Logger.getLogger("net.dv8tion.jda").setLevel(Level.WARNING);
-
         String token = config.getString("bottoken");
 
-        if(token.length() > 1) {
+        if(token != null) {
 
             jda = JDABuilder.createDefault(token)
+                    .setEnabledIntents(
+                            GatewayIntent.GUILD_MEMBERS,
+                            GatewayIntent.DIRECT_MESSAGES,
+                            GatewayIntent.GUILD_WEBHOOKS,
+                            GatewayIntent.GUILD_PRESENCES,
+                            GatewayIntent.GUILD_VOICE_STATES,
+                            GatewayIntent.GUILD_EMOJIS
+                    )
                     .setActivity(Activity.playing("LGL Prisons"))
                     .addEventListeners(new readyEvent())
                     .addEventListeners(new slashCommand())
@@ -39,7 +44,9 @@ public class Bot {
 
     }
     public static void disable() {
-        jda.shutdown();
+        if(jda != null) {
+            jda.shutdown();
+        }
         Chat.console("Bot Shutting Down");
     }
 

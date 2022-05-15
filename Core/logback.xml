@@ -1,0 +1,10 @@
+<configuration>
+    <logger name="org.mongodb.driver.cluster" level="OFF"/>
+    <logger name="org.mongodb.driver.protocol" level="OFF"/>
+    <logger name="org.mongodb.driver.connection" level="OFF"/>
+    <logger name="org.mongodb.driver.operation" level="OFF"/>
+    <logger name="org.mongodb.driver.client" level="OFF"/>
+    <logger name="org.mongodb.driver.connection" level="OFF" additivity="true"/>
+    <logger name="org.mongodb.driver.client" level="OFF" additivity="true"/>
+    <logger name="org.mongodb.driver.cluster" level="OFF" additivity="true"/>
+</configuration>

@@ -9,10 +9,10 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 
 public class blockBreak implements Listener {
-    private Main plugin;
+    private static Main plugin;
 
     public blockBreak(Main plugin) {
-        this.plugin = plugin;
+        blockBreak.plugin = plugin;
 
         Bukkit.getPluginManager().registerEvents(this, plugin);
     }
@@ -21,9 +21,6 @@ public class blockBreak implements Listener {
     public void onBlockBreakEvent(BlockBreakEvent e) {
         Player p = e.getPlayer();
 
-        int value = Database.blockbroken.get(p.getUniqueId());
-
-        Database.blockbroken.put(p.getUniqueId(), value++);
-        return;
+        Database.blockbroken.put(p.getUniqueId(), Database.blockbroken.get(p.getUniqueId()) + 1);
     }
 }

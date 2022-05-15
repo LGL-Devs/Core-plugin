@@ -1,8 +1,19 @@
 name: Core
 version: 1.0
 api-version: 1.18
+softdepend: [PlaceholderAPI]
 author: Sir_Blob_
-website: sirblob.bosstop.ml
+website: "https://sirblob.bosstop.ml"
 main: net.lglprison.Main
 description: LGL Prisons Core plugin
 load: STARTUP
+
+commands:
+  discord:
+    aliases: [d]
+    description: Discord Command
+    usage: /discord connect | find
+
+permissions:
+  core.discord:
+    default: op

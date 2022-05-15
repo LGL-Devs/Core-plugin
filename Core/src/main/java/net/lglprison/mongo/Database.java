@@ -9,7 +9,6 @@ import org.bson.Document;
 
 import java.util.HashMap;
 import java.util.UUID;
-
 import static net.lglprison.Main.config;
 
 public class Database {

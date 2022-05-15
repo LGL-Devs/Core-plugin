@@ -1,7 +1,10 @@
 package net.lglprison;
 
+import net.lglprison.commands.command;
 import net.lglprison.discord.*;
 import net.lglprison.events.Event;
+import net.lglprison.integrations.PAPI;
+import net.lglprison.integrations.register;
 import net.lglprison.mongo.Database;
 import net.lglprison.util.Chat;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -13,13 +16,13 @@ import java.io.File;
 public class Main extends JavaPlugin {
     private static final File configData = new File("plugins/Core/config.yml");
     public static YamlConfiguration config = YamlConfiguration.loadConfiguration(configData);
-    public Main() {}
+    public static PAPI placeholderapiExpansion;
 
+    public Main() {}
     @Override
     public void onEnable() {
 
         saveDefaultConfig();
-
 
         try {
             Bot.enable();
@@ -31,7 +34,8 @@ public class Main extends JavaPlugin {
 
         Database.connect();
         Event.listeners(this);
-        //command.enable(this);
+        register.enable();
+        command.enable(this);
 
         Chat.console("&fStarting Core");
         Chat.console("&fCore Active");

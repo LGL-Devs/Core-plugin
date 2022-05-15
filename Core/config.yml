@@ -1,4 +1,14 @@
 
+# Plugin CONFIGURATION
+
+prefix: ""
+
+
+# Info CONFIGURATION
+
+discordServerInvite: ""
+
+
 # Bot CONFIGURATION
 
 bottoken: ""
