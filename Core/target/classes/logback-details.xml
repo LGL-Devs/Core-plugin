@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <configuration>
     <logger name="org.mongodb.driver.cluster" level="OFF"/>
     <logger name="org.mongodb.driver.protocol" level="OFF"/>

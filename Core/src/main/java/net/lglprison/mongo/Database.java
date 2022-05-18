@@ -26,12 +26,16 @@ public class Database {
         }
 
         try {
+
             client = MongoClients.create("mongodb+srv://" + config.getString("DBusername") + ":" + config.getString("DBpassword") + "@" + config.getString("DBuri"));
+
+        } finally {
+
             database = client.getDatabase("LGL");
             collection = database.getCollection("test");
-        } finally {
             Chat.console("DataBase Connected");
             return;
+
         }
 
     }

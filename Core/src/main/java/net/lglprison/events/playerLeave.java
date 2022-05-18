@@ -3,7 +3,6 @@ package net.lglprison.events;
 import net.lglprison.Main;
 import net.lglprison.mongo.Database;
 import net.lglprison.mongo.Storage;
-import net.lglprison.util.Chat;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
