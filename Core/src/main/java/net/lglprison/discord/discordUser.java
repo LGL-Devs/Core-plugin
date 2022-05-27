@@ -9,7 +9,6 @@ import java.awt.*;
 import static net.lglprison.discord.Bot.jda;
 
 public class discordUser {
-
     public static void AccountLinked(String ID, Player p) {
         User user = jda.getUserById(ID);
 
@@ -23,5 +22,4 @@ public class discordUser {
                         .build()
         )).queue();
     }
-
 }

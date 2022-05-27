@@ -15,6 +15,8 @@ public class readyEvent extends ListenerAdapter {
             guild.updateCommands().addCommands(
                     Commands.slash("strike", "Gives a User a Strike")
                             .addOption(OptionType.USER, "user", "Targeted user"),
+                    Commands.slash("info", "Gets a players info")
+                            .addOption(OptionType.USER, "user", "Targeted user"),
                     Commands.slash("selector", "Posts the Roles Selector")
                             .addOption(OptionType.CHANNEL, "channel", "Targeted channel")
                             .addOptions(

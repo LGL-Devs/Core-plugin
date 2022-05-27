@@ -1,20 +1,22 @@
 
 # Plugin CONFIGURATION
 
-prefix: ""
-
+prefix: "&c&lL&f&lG&c&lL &8»&r"
 
 # Info CONFIGURATION
 
 discordServerInvite: ""
 
-
 # Bot CONFIGURATION
 
 bottoken: ""
-reportChannel: ""
+botstaff: "734032342967910491"
+
+#reportChannel: ""
 
 # Database CONFIGURATION
+
+collection: "test"
 
 DBuri: "cluster0.nulfd.mongodb.net"
 DBusername: "Admin"

@@ -71,7 +71,7 @@ public class discord implements CommandExecutor {
                             Chat.send(p, "&7Your discord account has already been linked to another MC Account");
                         } else {
 
-                            Storage.setPlayer(p.getUniqueId(), Storage.data.discord, args[1]);
+                            Storage.setPlayer(p.getUniqueId(), Storage.choices.discord, args[1]);
 
                             discordUser.AccountLinked(args[1], p);
                             Chat.send(p, "&7Your account has been found and linked to your Minecraft Account");

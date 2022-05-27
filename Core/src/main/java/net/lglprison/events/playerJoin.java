@@ -13,6 +13,8 @@ import org.bukkit.event.player.PlayerJoinEvent;
 
 import java.util.UUID;
 
+import static net.lglprison.events.blockBreak.blockbroken;
+
 public class playerJoin implements Listener {
 
     private Main plugin;
@@ -33,13 +35,14 @@ public class playerJoin implements Listener {
         if(Storage.findPlayer(uuid)) {
             Document doc = Storage.getPlayer(uuid);
             if(doc != null) {
-                Database.blockbroken.put(uuid, doc.getInteger("blocks"));
+                blockbroken.put(uuid, doc.getInteger("blocks"));
             } else {
+                blockbroken.put(uuid, 0);
                 Chat.console("Couldn't Load Player Data from Database");
                 Chat.console("Creating new Player");
-                Database.blockbroken.put(uuid, 0);
             }
         } else {
+            blockbroken.put(uuid, 0);
             Chat.console("Couldn't Load Player Data from Database");
             Chat.console("Creating new Player");
         }

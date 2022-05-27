@@ -16,5 +16,9 @@ public class slashCommand extends ListenerAdapter {
         if(interaction.getName().equals("status")) {
             return;
         }
+        if(interaction.getName().equals("info")) {
+            Commands.info(interaction);
+            return;
+        }
     }
 }

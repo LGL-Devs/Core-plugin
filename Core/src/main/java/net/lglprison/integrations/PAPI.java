@@ -2,11 +2,11 @@ package net.lglprison.integrations;
 
 import me.clip.placeholderapi.expansion.PlaceholderExpansion;
 import net.lglprison.Main;
-import net.lglprison.mongo.Database;
 import org.bukkit.entity.Player;
 
-public class PAPI extends PlaceholderExpansion {
+import static net.lglprison.events.blockBreak.blockbroken;
 
+public class PAPI extends PlaceholderExpansion {
     private Main plugin;
 
     public PAPI(Main plugin) {
@@ -41,7 +41,7 @@ public class PAPI extends PlaceholderExpansion {
 
         if (identifier.equals("blocks")) {
 
-            int blocks = Database.blockbroken.get(p.getUniqueId());
+            int blocks = blockbroken.get(p.getUniqueId());
 
             return Integer.toString(blocks);
         }

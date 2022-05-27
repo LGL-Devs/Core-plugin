@@ -7,16 +7,14 @@ import com.mongodb.client.MongoDatabase;
 import net.lglprison.util.Chat;
 import org.bson.Document;
 
-import java.util.HashMap;
-import java.util.UUID;
 import static net.lglprison.Main.config;
 
 public class Database {
-
-    public static HashMap<UUID, Integer> blockbroken = new HashMap<UUID, Integer>();
-    public static MongoClient client;
+    public static MongoClient client = null;
     public static MongoDatabase database;
     public static MongoCollection<Document> collection;
+
+    public static Storage storage;
 
     public static void connect() {
 
@@ -31,18 +29,28 @@ public class Database {
 
         } finally {
 
+            String col = config.getString("collection");
+
             database = client.getDatabase("LGL");
-            collection = database.getCollection("test");
-            Chat.console("DataBase Connected");
+
+            if(col != null) {
+                collection = database.getCollection(col);
+                Chat.console("DataBase Connected - " + config.getString("collection"));
+            } else {
+                collection = database.getCollection("test");
+                Chat.console("DataBase Connected - test");
+            }
+
             return;
 
         }
 
     }
-
-
     public static void disable() {
-        client.close();
+
+        if(client != null) {
+            client.close();
+        }
         Chat.console("Closing DataBase");
     }
 

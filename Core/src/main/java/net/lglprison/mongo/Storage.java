@@ -11,9 +11,8 @@ import org.bson.conversions.Bson;
 import java.util.UUID;
 
 public class Storage {
-
+    public enum choices { silvers, doubloons, rubies, discord, blocks, minerank }
     public enum currency { silvers, doubloons, rubies, blocks }
-    public enum data { discord, blocks }
 
     public static boolean findPlayer(UUID uuid) {
         FindIterable<Document> user = Database.collection.find(new Document("UUID", uuid.toString()));
@@ -40,6 +39,8 @@ public class Storage {
             Chat.console("Discord User: " + ID + " not in database");
             return null;
         }
+
+
         return user.first();
     }
 
@@ -50,6 +51,7 @@ public class Storage {
                 Updates.set("doubloons", 0),
                 Updates.set("silvers", 0),
                 Updates.set("blocks", 0),
+                Updates.set("minerank", 0),
                 Updates.set("discord", "")
         );
         UpdateOptions options = new UpdateOptions().upsert(true);
@@ -71,13 +73,13 @@ public class Storage {
         }
     }
 
-    public static void setPlayer(UUID uuid, data d, String ID) {
+    public static void setPlayer(UUID uuid, choices c, String input) {
 
         if(findPlayer(uuid)) {
             BasicDBObject query = new BasicDBObject("UUID", uuid.toString());
 
             Bson update = Updates.combine(
-                    Updates.set(d.toString(), ID)
+                    Updates.set(c.toString(), input)
             );
 
             UpdateOptions options = new UpdateOptions().upsert(true);
@@ -88,13 +90,13 @@ public class Storage {
         }
     }
 
-    public static void setPlayer(UUID uuid, data d, int value) {
+    public static void setPlayer(UUID uuid, choices c, int value) {
 
         if(findPlayer(uuid)) {
             BasicDBObject query = new BasicDBObject("UUID", uuid.toString());
 
             Bson update = Updates.combine(
-                    Updates.set(d.toString(), value)
+                    Updates.set(c.toString(), value)
             );
 
             UpdateOptions options = new UpdateOptions().upsert(true);
@@ -104,4 +106,5 @@ public class Storage {
             createPlayer(uuid);
         }
     }
+
 }

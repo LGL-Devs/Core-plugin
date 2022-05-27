@@ -23,15 +23,15 @@ public class Bot {
         if(token != null) {
 
             jda = JDABuilder.createDefault(token)
-                    .setEnabledIntents(
+                    /*.setEnabledIntents(
                             GatewayIntent.GUILD_MEMBERS,
                             GatewayIntent.DIRECT_MESSAGES,
                             GatewayIntent.GUILD_WEBHOOKS,
                             GatewayIntent.GUILD_PRESENCES,
                             GatewayIntent.GUILD_VOICE_STATES,
                             GatewayIntent.GUILD_EMOJIS
-                    )
-                    .setActivity(Activity.playing("LGL Prisons"))
+                    )*/
+                    //.setActivity(Activity.playing("LGL Prisons"))
                     .addEventListeners(new readyEvent())
                     .addEventListeners(new slashCommand())
                     .addEventListeners(new selectMenu())
@@ -43,7 +43,7 @@ public class Bot {
         }
 
     }
-    public static void disable() {
+    public static void shutdown() {
         if(jda != null) {
             jda.shutdown();
         }

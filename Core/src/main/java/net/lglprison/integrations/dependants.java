@@ -2,7 +2,7 @@ package net.lglprison.integrations;
 
 import net.lglprison.Main;
 
-public class register {
+public class dependants {
 
     //    PowerRanks.log.info("PlaceholderAPI found!");
     //    PowerRanks.placeholderapiExpansion = new PowerRanksExpansion(this);
@@ -10,14 +10,14 @@ public class register {
 
     private static Main plugin;
 
-    public register(Main plugin) {
+    public dependants(Main plugin) {
         this.plugin = plugin;
 
         Main.placeholderapiExpansion = new PAPI(plugin);
     }
 
-    public static void enable() {
+    public static void register() {
 
-        //Main.placeholderapiExpansion.register();
+        Main.placeholderapiExpansion.register();
     }
 }

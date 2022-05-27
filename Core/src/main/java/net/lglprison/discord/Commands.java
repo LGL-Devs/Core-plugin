@@ -2,11 +2,13 @@ package net.lglprison.discord;
 
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.Emoji;
+import net.dv8tion.jda.api.entities.User;
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
 import net.dv8tion.jda.api.interactions.components.selections.SelectMenu;
 import net.dv8tion.jda.api.interactions.components.selections.SelectOption;
 
 import java.awt.*;
+
 
 public class Commands {
 
@@ -16,7 +18,21 @@ public class Commands {
     public static void status(SlashCommandInteractionEvent interaction) {
         return;
     }
+    public static void info(SlashCommandInteractionEvent interaction) {
+
+        User target = (User) interaction.getOption("user");
+        System.out.println(target);
+
+        interaction.replyEmbeds(
+                new EmbedBuilder()
+                        .setColor(new Color(255, 0, 0))
+                        .setTitle("inter")
+                        .build()
+        );
+
+    }
     public static void seletor(SlashCommandInteractionEvent interaction) {
+
         interaction.replyEmbeds(
                         new EmbedBuilder()
                                 .setColor(new Color(255, 0, 0))
