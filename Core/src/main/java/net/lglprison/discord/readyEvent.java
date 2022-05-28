@@ -29,7 +29,8 @@ public class readyEvent extends ListenerAdapter {
                                     new OptionData(OptionType.STRING, "type", "Bot or Server")
                                             .addChoice("Bot", "bot")
                                             .addChoice("Server", "server")
-                            )
+                            ),
+                    Commands.slash("stats", "Your status ingame")
             ).queue();
             Chat.console(guild.getName() + " - Commands Loaded");
         }

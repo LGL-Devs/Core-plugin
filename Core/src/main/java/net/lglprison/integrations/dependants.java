@@ -8,7 +8,7 @@ public class dependants {
     //    PowerRanks.placeholderapiExpansion = new PowerRanksExpansion(this);
     //    PowerRanks.placeholderapiExpansion.register();
 
-    private static Main plugin;
+    private Main plugin;
 
     public dependants(Main plugin) {
         this.plugin = plugin;

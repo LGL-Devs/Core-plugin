@@ -2,9 +2,9 @@ package net.lglprison;
 
 import net.lglprison.commands.command;
 import net.lglprison.discord.*;
+import net.lglprison.economy.currencyManager;
 import net.lglprison.events.Event;
 import net.lglprison.integrations.PAPI;
-import net.lglprison.integrations.dependants;
 import net.lglprison.mongo.Database;
 import net.lglprison.util.Chat;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -24,17 +24,20 @@ public class Main extends JavaPlugin {
 
         saveDefaultConfig();
 
+        if(config == null) {
+            config = (YamlConfiguration) this.getConfig();
+        }
+
         try {
             Bot.enable();
-        } catch (LoginException e) {
-            throw new RuntimeException(e);
-        } catch (InterruptedException e) {
+        } catch (LoginException | InterruptedException e) {
             throw new RuntimeException(e);
         }
 
         Database.connect();
         Event.listeners(this);
-        new dependants(this).register();
+        new PAPI(this).register();
+        new currencyManager(this);
         command.enable(this);
 
         Chat.console("&fStarting Core");
@@ -48,9 +51,13 @@ public class Main extends JavaPlugin {
     @Override
     public void onDisable() {
 
-        Bot.shutdown();
-        Database.disable();
-        Chat.console("&fCore Disabled");
+        try {
+            Bot.shutdown();
+            Database.disable();
+            currencyManager.disable();
+        } finally {
+            Chat.console("&fCore Disabled");
+        }
 
     }
 

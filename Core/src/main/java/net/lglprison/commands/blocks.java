@@ -13,7 +13,7 @@ public class blocks implements CommandExecutor {
 
     public blocks(Main plugin){
         this.plugin = plugin;
-        plugin.getCommand("discord").setExecutor(this);
+        plugin.getCommand("blocks").setExecutor(this);
     }
 
     @Override
@@ -26,7 +26,7 @@ public class blocks implements CommandExecutor {
 
         Player p = (Player) sender;
 
-        if(cmd.getName().equalsIgnoreCase("discord")) {
+        if(cmd.getName().equalsIgnoreCase("blocks")) {
 
             if(args.length == 0) {
 

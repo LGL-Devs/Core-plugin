@@ -27,6 +27,7 @@ public class Storage {
     public static Document getPlayer(UUID uuid) {
         FindIterable<Document> user = Database.collection.find(new Document("UUID", uuid.toString()));
         if(user.first() == null) {
+            createPlayer(uuid);
             Chat.console("User: " + uuid + " not in database");
             return null;
         }
@@ -39,8 +40,6 @@ public class Storage {
             Chat.console("Discord User: " + ID + " not in database");
             return null;
         }
-
-
         return user.first();
     }
 

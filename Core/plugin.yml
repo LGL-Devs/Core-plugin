@@ -13,7 +13,13 @@ commands:
     aliases: [d]
     description: Discord Command
     usage: /discord connect | find
+  economy:
+    aliases: [econ]
+    description: Economy Command
+    usage: /econ
 
 permissions:
   core.discord:
+    default: op
+  core.admin:
     default: op
