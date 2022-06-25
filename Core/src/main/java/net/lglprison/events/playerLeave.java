@@ -8,7 +8,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerQuitEvent;
 
-import static net.lglprison.events.blockBreak.blockbroken;
+import static net.lglprison.events.blockBreak.blocksbroken;
 
 public class playerLeave implements Listener {
     private Main plugin;
@@ -22,7 +22,7 @@ public class playerLeave implements Listener {
 
         Player p = event.getPlayer();
 
-        int blocks = blockbroken.get(p.getUniqueId());
+        int blocks = blocksbroken.get(p.getUniqueId());
 
         Storage.setPlayer(p.getUniqueId(), Storage.choices.blocks, blocks);
     }

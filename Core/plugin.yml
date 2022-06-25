@@ -13,10 +13,18 @@ commands:
     aliases: [d]
     description: Discord Command
     usage: /discord connect | find
+  pay:
+    aliases: [pay]
+    description: Pay Command
+    usage: /pay
   economy:
-    aliases: [econ]
+    aliases: [ econ ]
     description: Economy Command
     usage: /econ
+  me:
+    aliases: [ me ]
+    description: Me Command
+    usage: /me
 
 permissions:
   core.discord:

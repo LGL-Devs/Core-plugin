@@ -14,7 +14,7 @@ public class Database {
     public static MongoDatabase database;
     public static MongoCollection<Document> collection;
 
-    public static Storage storage;
+    public static Storage storage = new Storage();
 
     public static void connect() {
 

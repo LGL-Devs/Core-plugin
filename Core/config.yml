@@ -21,3 +21,5 @@ collection: "test"
 DBuri: "cluster0.nulfd.mongodb.net"
 DBusername: "Admin"
 DBpassword: "lgldata7355608"
+
+# LANG CONFIGURATION

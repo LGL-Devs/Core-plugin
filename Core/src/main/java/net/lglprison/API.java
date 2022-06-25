@@ -1,12 +1,11 @@
 package net.lglprison;
 
-import net.lglprison.discord.Bot;
-import net.lglprison.mongo.Storage;
+import net.lglprison.mongo.Database;
 import net.lglprison.util.Chat;
 
 public class API {
-    public static Storage db = new Storage();
-    public static Bot bot;
-    public static Chat chat;
+    public static Database db = new Database();
+    public static Chat chat = new Chat();
+
 }
 

@@ -1,6 +1,6 @@
 package net.lglprison;
 
-import net.lglprison.commands.command;
+import net.lglprison.commands.Command;
 import net.lglprison.discord.*;
 import net.lglprison.economy.currencyManager;
 import net.lglprison.events.Event;
@@ -15,7 +15,6 @@ import java.io.File;
 
 public class Main extends JavaPlugin {
 
-    public static API api;
     public static YamlConfiguration config = YamlConfiguration.loadConfiguration(new File("plugins/Core/config.yml"));
     public static PAPI placeholderapiExpansion;
     public Main() {}
@@ -38,7 +37,7 @@ public class Main extends JavaPlugin {
         Event.listeners(this);
         new PAPI(this).register();
         new currencyManager(this);
-        command.enable(this);
+        Command.enable(this);
 
         Chat.console("&fStarting Core");
         Chat.console("&fCore Active");
@@ -53,12 +52,17 @@ public class Main extends JavaPlugin {
 
         try {
             Bot.shutdown();
-            Database.disable();
             currencyManager.disable();
         } finally {
+            Database.disable();
             Chat.console("&fCore Disabled");
         }
 
+    }
+
+    public static API getAPI() {
+        API api = new API();
+        return api;
     }
 
 }

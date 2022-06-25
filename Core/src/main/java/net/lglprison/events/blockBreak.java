@@ -13,7 +13,7 @@ import java.util.UUID;
 public class blockBreak implements Listener {
     private static Main plugin;
 
-    public static HashMap<UUID, Integer> blockbroken = new HashMap<UUID, Integer>();
+    public static HashMap<UUID, Integer> blocksbroken = new HashMap<UUID, Integer>();
 
     public blockBreak(Main plugin) {
         blockBreak.plugin = plugin;
@@ -25,6 +25,6 @@ public class blockBreak implements Listener {
     public void onBlockBreakEvent(BlockBreakEvent e) {
         Player p = e.getPlayer();
 
-        blockbroken.put(p.getUniqueId(), blockbroken.get(p.getUniqueId()) + 1);
+        blocksbroken.put(p.getUniqueId(), blocksbroken.get(p.getUniqueId()) + 1);
     }
 }

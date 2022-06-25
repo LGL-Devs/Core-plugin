@@ -5,7 +5,7 @@ import net.lglprison.Main;
 import net.lglprison.economy.currencyManager;
 import org.bukkit.entity.Player;
 
-import static net.lglprison.events.blockBreak.blockbroken;
+import static net.lglprison.events.blockBreak.blocksbroken;
 
 public class PAPI extends PlaceholderExpansion {
     private Main plugin;
@@ -48,7 +48,7 @@ public class PAPI extends PlaceholderExpansion {
 
         if (identifier.equals("blocks")) {
 
-            int blocks = blockbroken.get(p.getUniqueId());
+            int blocks = blocksbroken.get(p.getUniqueId());
 
             return Integer.toString(blocks);
         }
